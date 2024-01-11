@@ -3,13 +3,18 @@
 import { trpc } from '@/utils/trpc'
 
 export default function Home() {
-  const hello = trpc.hello.useQuery({ text: 'client' })
-  if (!hello.data) {
-    return <div>Loading...</div>
+  // const mutation = trpc.login.useMutation()
+  const mutation = trpc.admin.sec.useMutation()
+  const handleSubmit = () => {
+    mutation.mutate()
   }
+  // if (!mutation.data) {
+  //   return <div>Loading...</div>
+  // }
   return (
     <div>
-      <p>{hello.data.greeting}</p>
+      <button onClick={handleSubmit}>Btn</button>
+      {/* <p>{mutation}</p> */}
     </div>
   )
 }
